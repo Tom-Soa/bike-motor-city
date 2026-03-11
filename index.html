@@ -97,10 +97,10 @@
     .btn-outline:hover { border-color: var(--text); transform: translateY(-2px); }
     .btn-outline-white {
       background: transparent;
-      color: #111;
-      border: 1.5px solid rgba(0,0,0,.25);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.4);
     }
-    .btn-outline-white:hover { border-color: #111; transform: translateY(-2px); }
+    .btn-outline-white:hover { border-color: #fff; transform: translateY(-2px); }
     .divider { width: 48px; height: 3px; background: var(--red); margin: 1.5rem 0; }
 
     /* ── NOISE OVERLAY ── */
@@ -196,31 +196,32 @@
       position: relative;
       z-index: 2;
       overflow: hidden;
-      min-height: 100vh;
       padding: 0;
-      background: #fff;
+      background: #111;
     }
 
     /* ── Grille géométrique de fond ── */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: #fff;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center;
     }
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(0,0,0,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,.06) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background: linear-gradient(to right, rgba(0,0,0,.82) 0%, rgba(0,0,0,.5) 60%, rgba(0,0,0,.2) 100%);
     }
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(224,48,48,.07) 0%, transparent 70%);
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
     /* ── Formes géométriques décoratives ── */
@@ -261,7 +262,7 @@
       line-height: .9;
       letter-spacing: .02em;
       margin-bottom: 2rem;
-      color: #111;
+      color: #fff;
     }
     /* MÉRITE — outline fin rouge, intérieur transparent */
     .hero-title .outline {
@@ -304,20 +305,20 @@
     }
     .hero-stat-item {
       padding: .75rem 3rem .75rem 3rem;
-      border-right: 1px solid rgba(0,0,0,.1);
+      border-right: 1px solid rgba(255,255,255,.2);
       text-align: center;
     }
     .hero-stat-item:last-child { border-right: none; }
     .hero-stat-num {
       font-family: var(--ff-head);
       font-size: 3.5rem;
-      color: #111;
+      color: #fff;
       line-height: 1;
     }
     .hero-stat-num span { color: var(--red); }
     .hero-stat-label {
       font-size: .65rem;
-      color: rgba(0,0,0,.45);
+      color: rgba(255,255,255,.55);
       letter-spacing: .15em;
       text-transform: uppercase;
       margin-top: .3rem;
@@ -871,7 +872,8 @@
       .nav-links, .nav-phone, .nav-cta { display: none; }
       .burger { display: flex; }
       .container { padding: 0 1.5rem; }
-      .hero-inner { padding: 5.5rem 0 0; min-height: unset; text-align: left; }
+      .hero-inner { padding: 5.5rem 0 0; min-height: calc(100dvh - 2.8rem); text-align: left; display: flex; flex-direction: column; justify-content: space-evenly; }
+      #hero { min-height: unset; }
       .hero-stats { justify-content: center; }
       .hero-content { align-items: flex-start; text-align: left; }
       .hero-eyebrow { justify-content: flex-start; }
@@ -902,7 +904,8 @@
     @media (max-width: 480px) {
       .container { padding: 0 1.25rem; }
       .why-grid { grid-template-columns: 1fr; }
-      .hero-inner { min-height: unset; padding: 5.5rem 0 0; text-align: left; }
+      .hero-inner { min-height: calc(100dvh - 2.8rem); padding: 5.5rem 0 0; text-align: left; display: flex; flex-direction: column; justify-content: space-evenly; }
+      #hero { min-height: unset; }
       .hero-content { align-items: flex-start; text-align: left; }
       .hero-eyebrow { justify-content: flex-start; }
       .hero-title { font-size: clamp(2.4rem, 9vw, 3.2rem); text-align: left; }
@@ -1273,7 +1276,7 @@
           <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div>
             <div class="contact-detail-label">E-mail</div>
-            <div class="contact-detail-value"><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></div>
+            <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#6d0f040608000219021f0e04191454592d01041b08430b1f"><span class="__cf_email__" data-cfemail="35575c5e50585a415a47565c414c0c0175595c43501b5347">[email&#160;protected]</span></a></div>
           </div>
         </div>
 
@@ -1357,7 +1360,7 @@
       Numéro de TVA intracommunautaire : FR12 123456789<br>
       Responsable de publication : <strong>Jean Dupont</strong><br>
       Téléphone : 01 49 61 20 85<br>
-      Email : bikemotorcity94@live.fr
+      Email : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="77151e1c121a18031805141e030e4e43371b1e0112591105">[email&#160;protected]</a>
     </p>
 
     <h3 style="font-size:1rem;font-weight:700;margin:1.5rem 0 .4rem;">2. Hébergement</h3>
@@ -1372,7 +1375,7 @@
     <p>L'ensemble des contenus présents sur ce site (textes, images, logos, graphismes) est la propriété exclusive de Bike Motor City ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle. Toute reproduction, même partielle, est strictement interdite sans autorisation préalable écrite.</p>
 
     <h3 style="font-size:1rem;font-weight:700;margin:1.5rem 0 .4rem;">4. Données personnelles</h3>
-    <p>Les informations collectées via le formulaire de contact sont destinées exclusivement à Bike Motor City et ne sont jamais transmises à des tiers. Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, contactez-nous à : <strong>bikemotorcity94@live.fr</strong>.</p>
+    <p>Les informations collectées via le formulaire de contact sont destinées exclusivement à Bike Motor City et ne sont jamais transmises à des tiers. Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, contactez-nous à : <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="debcb7b5bbb3b1aab1acbdb7aaa7e7ea9eb2b7a8bbf0b8ac">[email&#160;protected]</a></strong>.</p>
 
     <h3 style="font-size:1rem;font-weight:700;margin:1.5rem 0 .4rem;">5. Cookies</h3>
     <p>Ce site n'utilise pas de cookies à des fins publicitaires ou de traçage. Des cookies techniques strictement nécessaires au bon fonctionnement du site peuvent être déposés sur votre terminal.</p>
@@ -1419,7 +1422,7 @@
         <ul class="footer-links">
           <li><a href="tel:0149612085">01 49 61 20 85</a></li>
           <li><a href="tel:0664949056">06 64 94 90 56</a></li>
-          <li><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#a9cbc0c2ccc4c6ddc6dbcac0ddd0909de9c5c0dfcc87cfdb"><span class="__cf_email__" data-cfemail="a1c3c8cac4ccced5ced3c2c8d5d89895e1cdc8d7c48fc7d3">[email&#160;protected]</span></a></li>
           <li><a href="#contact">119 Av. Le Foll, 94290</a></li>
         </ul>
       </div>
@@ -1435,7 +1438,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── NAVBAR SCROLL ── */
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1464,24 +1467,4 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  /* ── FORM ── */
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('form-success').style.display = 'block';
-    e.target.style.opacity = '.4';
-    e.target.style.pointerEvents = 'none';
-  }
-
-  /* ── MENTIONS LÉGALES ── */
-  function openLegal() {
-    document.getElementById('modal-legal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLegal() {
-    document.getElementById('modal-legal').style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLegal(); });
-</script>
-</body>
-</html>
+  /* ── FORM
