@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bike Motor City — Atelier Deux-Roues à Villeneuve-le-Roi</title>
+  <meta name="description" content="Bike Motor City, votre atelier mécanique deux-roues à Villeneuve-le-Roi depuis 1998. Entretien, réparation, vente de motos et scooters.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & VARIABLES ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:       #0d0d0d;
+      --dark:        #141414;
+      --page-bg:     #ffffff;
+      --section-alt: #f7f7f5;
+      --gray:        #f0f0ee;
+      --border:      #e0e0dc;
+      --border-dark: #2a2a2a;
+      --muted:       #888880;
+      --text:        #1a1a1a;
+      --text-light:  #555550;
+      --white:       #ffffff;
+      --red:         #e03030;
+      --red-dim:     #9a1f1f;
+      --ff-head: 'Bebas Neue', sans-serif;
+      --ff-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--gray); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+    .tag {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid rgba(224,48,48,.35);
+      background: rgba(224,48,48,.06);
+      padding: .25rem .75rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: .02em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .section-title span { color: var(--red); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--ff-body);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .85rem 2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: 1px solid var(--red);
+    }
+    .btn-primary:hover { background: #c02020; border-color: #c02020; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(224,48,48,.25); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text); transform: translateY(-2px); }
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.4);
+    }
+    .btn-outline-white:hover { border-color: #fff; transform: translateY(-2px); }
+    .divider { width: 48px; height: 3px; background: var(--red); margin: 1.5rem 0; }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .4;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      transition: background .3s ease, padding .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 20px rgba(0,0,0,.06);
+    }
+    nav.scrolled .nav-logo { color: var(--text); }
+    nav.scrolled .nav-links a { color: var(--text-light); }
+    nav.scrolled .nav-links a:hover { color: var(--text); }
+    nav.scrolled .nav-phone { color: var(--muted); }
+    nav.scrolled .nav-phone:hover { color: var(--text); }
+    nav.scrolled .burger span { background: var(--text); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--ff-head);
+      font-size: 1.7rem;
+      letter-spacing: .06em;
+      color: #fff;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { margin-left: 1.5rem; }
+    .nav-phone {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      color: rgba(255,255,255,.6);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .nav-phone:hover { color: #fff; }
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: .5rem;
+    }
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all .3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 0 5rem;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(13,13,13,1) 40%, rgba(224,48,48,.08) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(13,13,13,1) 45%, rgba(13,13,13,.5) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .hero-eyebrow {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: var(--red);
+    }
+    .hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: .95;
+      letter-spacing: .03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title .outline {
+      -webkit-text-stroke: 1px rgba(244,244,242,.25);
+      color: transparent;
+    }
+    .hero-title .accent { color: var(--red); }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--light);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 3rem;
+      margin-top: 5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .hero-stat-num {
+      font-family: var(--ff-head);
+      font-size: 2.8rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-num span { color: var(--red); }
+    .hero-stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: .25rem;
+    }
+    /* Animated lines decoration */
+    .hero-lines {
+      position: absolute;
+      right: -4%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      opacity: .06;
+      pointer-events: none;
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: var(--red);
+      padding: .75rem 0;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.85);
+      padding: 0 3rem;
+      flex-shrink: 0;
+    }
+    .ticker-item::after {
+      content: '●';
+      margin-left: 3rem;
+      opacity: .5;
+    }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── ABOUT ── */
+    #about { padding: 7rem 0; background: var(--page-bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-main {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--red);
+      padding: 1.5rem 2rem;
+      border-radius: 2px;
+      text-align: center;
+    }
+    .about-img-badge strong {
+      display: block;
+      font-family: var(--ff-head);
+      font-size: 3.5rem;
+      line-height: 1;
+      color: #fff;
+    }
+    .about-img-badge small {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+    }
+    .about-img-accent {
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      width: 120px;
+      height: 120px;
+      border: 2px solid var(--border);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.25rem;
+      font-size: .98rem;
+    }
+    .about-brands {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 2rem;
+    }
+    .brand-pill {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--gray);
+      border: 1px solid var(--border);
+      padding: .35rem .85rem;
+      border-radius: 2px;
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .brand-pill:hover { color: var(--text); border-color: var(--muted); background: #fff; }
+
+    /* ── SERVICES ── */
+    #services { padding: 7rem 0; background: var(--section-alt); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+    }
+    .service-card {
+      background: #fff;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .service-card:hover { background: var(--gray); }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--red);
+      transition: width .4s ease;
+    }
+    .service-card:hover::before { width: 100%; }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+    .service-num {
+      font-family: var(--ff-head);
+      font-size: .9rem;
+      color: var(--border);
+      letter-spacing: .1em;
+      margin-bottom: .5rem;
+    }
+    .service-name {
+      font-family: var(--ff-head);
+      font-size: 1.7rem;
+      letter-spacing: .04em;
+      margin-bottom: .75rem;
+      color: var(--text);
+    }
+    .service-desc {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .service-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .service-list li {
+      font-size: .82rem;
+      color: var(--text-light);
+      padding: .3rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .service-list li::before {
+      content: '→';
+      color: var(--red);
+      font-size: .75rem;
+    }
+
+    /* Extra service cards row */
+    .services-extra {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .service-extra-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .service-extra-card:hover { border-color: rgba(224,48,48,.4); box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+    .service-extra-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+    .service-extra-card h4 {
+      font-family: var(--ff-head);
+      font-size: 1.2rem;
+      letter-spacing: .04em;
+      margin-bottom: .4rem;
+      color: var(--text);
+    }
+    .service-extra-card p {
+      font-size: .84rem;
+      color: var(--muted);
+    }
+
+    /* ── WHY US ── */
+    #why { padding: 7rem 0; background: var(--page-bg); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .why-card {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .why-card:hover { border-color: rgba(224,48,48,.3); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+    .why-card-num {
+      font-family: var(--ff-head);
+      font-size: 5rem;
+      color: var(--gray);
+      line-height: 1;
+      position: absolute;
+      top: .5rem; right: 1rem;
+      transition: color .3s;
+    }
+    .why-card:hover .why-card-num { color: rgba(224,48,48,.1); }
+    .why-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .why-card h3 {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      letter-spacing: .04em;
+      margin-bottom: .5rem;
+      color: var(--text);
+    }
+    .why-card p { font-size: .85rem; color: var(--muted); }
+
+    /* ── REVIEWS ── */
+    #reviews {
+      padding: 7rem 0;
+      background: var(--section-alt);
+    }
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .reviews-platform {
+      font-size: .8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 2rem;
+      position: relative;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .review-card:hover { border-color: rgba(224,48,48,.25); box-shadow: 0 4px 24px rgba(0,0,0,.07); }
+    .review-quote {
+      font-size: 2.5rem;
+      color: var(--red);
+      font-family: serif;
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .review-text {
+      font-size: .9rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .review-stars {
+      color: #f5a623;
+      font-size: .9rem;
+      margin-bottom: 1rem;
+      letter-spacing: .1em;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .review-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .review-name { font-size: .85rem; font-weight: 500; color: var(--text); }
+    .review-date { font-size: .75rem; color: var(--muted); }
+    .reviews-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .reviews-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .score-num {
+      font-family: var(--ff-head);
+      font-size: 3.5rem;
+      color: var(--text);
+      line-height: 1;
+    }
+    .score-info small { font-size: .75rem; color: var(--muted); display: block; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 7rem 0; background: var(--page-bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: .75rem; }
+    .contact-info p {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-label { font-size: .7rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+    .contact-detail-value { font-size: .95rem; font-weight: 500; margin-top: .1rem; color: var(--text); }
+    .contact-detail-value a:hover { color: var(--red); }
+    .horaires {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .horaires h4 {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+    .horaires-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .85rem;
+      padding: .4rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-light);
+    }
+    .horaires-row:last-child { border-bottom: none; }
+    .horaires-row .day { color: var(--muted); }
+
+    /* FORM */
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-size: .9rem;
+      padding: .85rem 1rem;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(224,48,48,.08); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: #fff; color: var(--text); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-submit { margin-top: .5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #222;
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
+    .footer-brand p { font-size: .85rem; color: #666; max-width: 240px; line-height: 1.7; }
+    .footer-col h5 {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 1.25rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-links a { font-size: .88rem; color: #aaa; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid #222;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: .78rem; color: #555; }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: .78rem; color: #555; transition: color .2s; }
+    .footer-legal a:hover { color: #fff; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE NAV OVERLAY ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,13,13,.98);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--ff-head);
+      font-size: 2.5rem;
+      letter-spacing: .06em;
+      color: var(--white);
+      transition: color .2s;
+    }
+    .mobile-nav a:hover { color: var(--red); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-main { height: 340px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-phone, .nav-cta { display: none; }
+      .burger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-extra { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── MOBILE NAV ── -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#accueil" onclick="closeMobile()">Accueil</a>
+  <a href="#about" onclick="closeMobile()">À propos</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#reviews" onclick="closeMobile()">Avis</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="tel:0149612085" class="btn btn-primary" style="font-family:var(--ff-body);margin-top:1rem;">📞 01 49 61 20 85</a>
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#accueil" class="nav-logo">BIKE<span>MOTOR</span>CITY</a>
+    <ul class="nav-links">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Avis</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <a href="tel:0149612085" class="nav-phone">📞 01 49 61 20 85</a>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta" style="padding:.6rem 1.4rem;font-size:.75rem;">Prendre RDV</a>
+      <div class="burger" id="burgerBtn" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="accueil" style="position:relative;">
+  <div class="hero-bg"></div>
+  <!-- decorative vertical lines -->
+  <svg class="hero-lines" width="300" height="600" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="0" x2="0" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="40" y1="0" x2="40" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="80" y1="0" x2="80" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="120" y1="0" x2="120" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="160" y1="0" x2="160" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="240" y1="0" x2="240" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="280" y1="0" x2="280" y2="600" stroke="white" stroke-width="1"/>
+  </svg>
+
+  <div id="hero" class="container">
+    <div style="width:100%;">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Atelier deux-roues — Villeneuve-le-Roi</p>
+        <h1 class="hero-title">
+          VOTRE<br>
+          <span class="accent">MOTO</span><br>
+          <span class="outline">MÉRITE</span><br>
+          LE MEILLEUR
+        </h1>
+        <p class="hero-desc">Confiez votre moto ou scooter à notre garage. Entretien, réparation et vente par des professionnels passionnés depuis 1998.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+          <a href="tel:0149612085" class="btn btn-outline-white">📞 Appeler le garage</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">25<span>+</span></div>
+          <div class="hero-stat-label">Ans d'expérience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100<span>+</span></div>
+          <div class="hero-stat-label">Avis clients</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">10<span>+</span></div>
+          <div class="hero-stat-label">Marques partenaires</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">Entretien & Révision</span>
+    <span class="ticker-item">Réparation toutes marques</span>
+    <span class="ticker-item">Vente pièces détachées</span>
+    <span class="ticker-item">Remorquage</span>
+    <span class="ticker-item">Hivernage</span>
+    <span class="ticker-item">Carte grise</span>
+    <span class="ticker-item">Véhicule de prêt</span>
+    <span class="ticker-item">Trail & Off-Road</span>
+    <span class="ticker-item">Entretien & Révision</span>
+    <span class="ticker-item">Réparation toutes marques</span>
+    <span class="ticker-item">Vente pièces détachées</span>
+    <span class="ticker-item">Remorquage</span>
+    <span class="ticker-item">Hivernage</span>
+    <span class="ticker-item">Carte grise</span>
+    <span class="ticker-item">Véhicule de prêt</span>
+    <span class="ticker-item">Trail & Off-Road</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <img
+          class="about-img-main"
+          src="https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?w=900&auto=format&fit=crop&q=80"
+          alt="Mécanicien au travail dans l'atelier Bike Motor City"
+        />
+        <div class="about-img-accent"></div>
+        <div class="about-img-badge">
+          <strong>1998</strong>
+          <small>Fondé en</small>
+        </div>
+      </div>
+      <div class="about-text fade-up">
+        <span class="tag">À propos de nous</span>
+        <h2 class="section-title">L'ATELIER <span>DEUX-ROUES</span> DU VAL-DE-MARNE</h2>
+        <div class="divider"></div>
+        <p>Bienvenue chez <strong>Bike Motor City</strong>, atelier mécanique deux-roues fondé en 1998, situé au 119 Avenue Le Foll à Villeneuve-le-Roi (94290).</p>
+        <p>Nos mécaniciens expérimentés réalisent toutes les réparations sur place, devant vous si vous le souhaitez. Chaque intervention est accompagnée d'un <strong>rapport détaillé avec photos</strong> pour un suivi transparent.</p>
+        <p>Notre boutique propose une large gamme d'équipements trail et off-road — confort, sécurité et performance garantis sur toutes les routes et pistes.</p>
+        <p>Nous travaillons en partenariat avec des marques de référence :</p>
+        <div class="about-brands">
+          <span class="brand-pill">Sifam</span>
+          <span class="brand-pill">Allo Pneus</span>
+          <span class="brand-pill">Pneus Online</span>
+          <span class="brand-pill">P2R</span>
+          <span class="brand-pill">Moraco</span>
+          <span class="brand-pill">Zodiac</span>
+          <span class="brand-pill">FC Parts</span>
+          <span class="brand-pill">Bihr</span>
+          <span class="brand-pill">Surplus Motos</span>
+        </div>
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn btn-primary">Nous contacter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div>
+        <span class="tag">Nos prestations</span>
+        <h2 class="section-title">TOUT CE DONT<br>VOTRE <span>MOTO</span> A BESOIN</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline">Demander un devis →</a>
+    </div>
+
+    <!-- 3 main service cards -->
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon">🔧</div>
+        <h3 class="service-name">ENTRETIEN</h3>
+        <p class="service-desc">Révision complète, vidange, contrôle et mise en conformité de votre deux-roues par nos experts.</p>
+        <ul class="service-list">
+          <li>Vidange & filtres</li>
+          <li>Révision complète</li>
+          <li>Contrôle freins & pneus</li>
+          <li>Réglage carburateur</li>
+          <li>Mise à jour suivi entretien</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">⚙️</div>
+        <h3 class="service-name">RÉPARATION</h3>
+        <p class="service-desc">Diagnostic rapide et réparations de qualité, toutes marques, motos et scooters — avec rapport photo.</p>
+        <ul class="service-list">
+          <li>Diagnostic électronique</li>
+          <li>Réparation moteur</li>
+          <li>Partie cycle & suspension</li>
+          <li>Système électrique</li>
+          <li>Carrosserie & finitions</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">🏍️</div>
+        <h3 class="service-name">VENTE</h3>
+        <p class="service-desc">Véhicules d'occasion vérifiés, pièces détachées et accessoires trail & off-road en stock.</p>
+        <ul class="service-list">
+          <li>Motos & scooters d'occasion</li>
+          <li>Pièces détachées</li>
+          <li>Accessoires trail / off-road</li>
+          <li>Équipements & protections</li>
+          <li>Pneumatiques toutes marques</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Extra services -->
+    <div class="services-extra" style="margin-top:1.5rem;">
+      <div class="service-extra-card fade-up">
+        <div class="service-extra-icon">🚗</div>
+        <div>
+          <h4>REMORQUAGE & DÉPANNAGE</h4>
+          <p>Panne en route ? Nous intervenons pour récupérer votre véhicule et le ramener à l'atelier rapidement.</p>
+        </div>
+      </div>
+      <div class="service-extra-card fade-up">
+        <div class="service-extra-icon">❄️</div>
+        <div>
+          <h4>HIVERNAGE</h4>
+          <p>Stockage sécurisé de votre moto pendant l'hiver avec préparation au retour de la belle saison.</p>
+        </div>
+      </div>
+      <div class="service-extra-card fade-up">
+        <div class="service-extra-icon">📋</div>
+        <div>
+          <h4>CARTE GRISE & CESSION</h4>
+          <p>Accompagnement pour vos démarches administratives : changement de carte grise, déclaration de cession, etc.</p>
+        </div>
+      </div>
+      <div class="service-extra-card fade-up">
+        <div class="service-extra-icon">🛵</div>
+        <div>
+          <h4>VÉHICULE DE PRÊT</h4>
+          <p>Ne restez pas à pied ! Un scooter de prêt est disponible le temps de votre réparation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section id="why">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="tag">Pourquoi nous choisir</span>
+      <h2 class="section-title">CE QUI NOUS <span>DISTINGUE</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-card-num">01</div>
+        <div class="why-card-icon">⭐</div>
+        <h3>Expérience</h3>
+        <p>Plus de 25 ans de passion et de savoir-faire au service des deux-roues dans le Val-de-Marne.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-num">02</div>
+        <div class="why-card-icon">🛵</div>
+        <h3>Véhicule de prêt</h3>
+        <p>Continuez votre quotidien pendant la réparation grâce à notre scooter de courtoisie disponible.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-num">03</div>
+        <div class="why-card-icon">🏷️</div>
+        <h3>Marques reconnues</h3>
+        <p>Partenariats avec Sifam, Bihr, Zodiac et d'autres fournisseurs de référence pour des pièces fiables.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-num">04</div>
+        <div class="why-card-icon">📄</div>
+        <h3>Suivi transparent</h3>
+        <p>Rapport de suivi mécanique détaillé avec photos à chaque intervention pour une totale transparence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header fade-up">
+      <div>
+        <span class="tag">Témoignages</span>
+        <h2 class="section-title">ILS NOUS <span>FONT CONFIANCE</span></h2>
+      </div>
+      <div>
+        <div class="reviews-score">
+          <div>
+            <div class="score-num">4.8</div>
+            <div style="color:#f5a623;font-size:.9rem;margin-top:.2rem;">★★★★★</div>
+          </div>
+          <div>
+            <small style="color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;">Note moyenne</small>
+            <div style="font-size:.85rem;color:var(--text-light);margin-top:.2rem;">+100 avis Allo Pneus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Excellent accueil, diagnostic rapide et réparation faite dans les délais annoncés. Le rapport photo à la fin est vraiment un plus. Je recommande vivement.</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marc T.</div>
+            <div class="review-date">Novembre 2024 · Allo Pneus</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Confié mon scooter pour une révision complète. Travail sérieux, prix honnête, et un mécanicien qui prend le temps d'expliquer ce qu'il a fait. Top !</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sophie L.</div>
+            <div class="review-date">Octobre 2024 · Allo Pneus</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">Super garage, ça fait plusieurs années que j'y amène ma moto. Toujours bien reçu, prise en charge rapide et le scooter de prêt m'a vraiment dépanné.</p>
+        <div class="review-author">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-name">Karim B.</div>
+            <div class="review-date">Septembre 2024 · Allo Pneus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-cta fade-up">
+      <a href="https://www.allopneus.com/montage-pneu/val-de-marne-94/villeneuve-le-roi/bike-motor-city-7833" target="_blank" class="btn btn-outline">Voir tous les avis sur Allo Pneus →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <span class="tag">Nous contacter</span>
+        <h2 class="section-title">PRENEZ <span>RENDEZ-VOUS</span></h2>
+        <p>Venez nous rendre visite ou contactez-nous pour un devis rapide et gratuit. Nous intervenons sur tous types de motos et scooters.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Adresse</div>
+            <div class="contact-detail-value">119 Avenue Le Foll<br>94290 Villeneuve-le-Roi</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Téléphone</div>
+            <div class="contact-detail-value">
+              <a href="tel:0149612085">01 49 61 20 85</a><br>
+              <a href="tel:0664949056">06 64 94 90 56</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div>
+            <div class="contact-detail-label">E-mail</div>
+            <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#294b40424c44465d465b4a405d50101d6945405f4c074f5b"><span class="__cf_email__" data-cfemail="bbd9d2d0ded6d4cfd4c9d8d2cfc2828ffbd7d2cdde95ddc9">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+
+        <div class="horaires">
+          <h4>🕐 Horaires d'ouverture</h4>
+          <div class="horaires-row"><span class="day">Lundi – Vendredi</span><span>9h00 – 12h30 / 14h00 – 18h30</span></div>
+          <div class="horaires-row"><span class="day">Samedi</span><span>9h00 – 13h00</span></div>
+          <div class="horaires-row"><span class="day">Dimanche</span><span style="color:var(--red-dim);">Fermé</span></div>
+        </div>
+      </div>
+
+      <div class="fade-up">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" placeholder="Jean" required />
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" placeholder="Dupont" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tel">Téléphone</label>
+              <input type="tel" id="tel" placeholder="06 00 00 00 00" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="jean@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Type de prestation</label>
+            <select id="service">
+              <option value="">Sélectionner...</option>
+              <option>Entretien / Révision</option>
+              <option>Réparation</option>
+              <option>Vente / Achat</option>
+              <option>Carte grise</option>
+              <option>Remorquage</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="vehicule">Votre véhicule (marque & modèle)</label>
+            <input type="text" id="vehicule" placeholder="Ex: Yamaha MT-07" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Décrivez votre besoin..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Envoyer ma demande →</button>
+          </div>
+        </form>
+        <div id="form-success" style="display:none;padding:1.5rem;background:rgba(224,48,48,.06);border:1px solid rgba(224,48,48,.25);border-radius:2px;margin-top:1rem;text-align:center;">
+          <strong style="color:var(--text);">✅ Message envoyé !</strong><br>
+          <span style="font-size:.85rem;color:var(--muted);">Nous vous recontactons dans les plus brefs délais.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">BIKE<span style="color:var(--red);">MOTOR</span>CITY</div>
+        <p>Votre atelier deux-roues de confiance à Villeneuve-le-Roi depuis 1998. Entretien, réparation et vente de motos & scooters.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul class="footer-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#reviews">Avis clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="#services">Entretien</a></li>
+          <li><a href="#services">Réparation</a></li>
+          <li><a href="#services">Vente</a></li>
+          <li><a href="#services">Remorquage</a></li>
+          <li><a href="#services">Carte grise</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul class="footer-links">
+          <li><a href="tel:0149612085">01 49 61 20 85</a></li>
+          <li><a href="tel:0664949056">06 64 94 90 56</a></li>
+          <li><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></li>
+          <li><a href="#contact">119 Av. Le Foll, 94290</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Bike Motor City — Tous droits réservés</p>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">Vie privée</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── NAVBAR SCROLL ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── MOBILE NAV ── */
+  function toggleMobile() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  function closeMobile() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  /* ── FADE-UP OBSERVER ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80 * i);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── FORM ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.style.opacity = '.4';
+    e.target.style.pointerEvents = 'none';
+  }
+</script>
+</body>
+</html>
