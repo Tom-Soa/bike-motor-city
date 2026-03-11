@@ -105,13 +105,7 @@
 
     /* ── NOISE OVERLAY ── */
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1;
-      opacity: .4;
+      display: none;
     }
 
     /* ── NAVBAR ── */
@@ -257,22 +251,18 @@
       color: #fff;
       text-shadow: 0 2px 20px rgba(0,0,0,.5);
     }
-    /* MÉRITE — style italic outline rouge */
+    /* MÉRITE — outline blanc épais, intérieur noir */
     .hero-title .outline {
-      font-style: italic;
+      font-style: normal;
       color: transparent;
-      -webkit-text-stroke: 2px rgba(200,30,30,.9);
-      letter-spacing: .08em;
+      -webkit-text-stroke: 3px rgba(255,255,255,0.85);
+      letter-spacing: .1em;
       position: relative;
       display: inline-block;
-      transform: skewX(-4deg);
+      transform: none;
     }
     .hero-title .outline::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -4px;
-      width: 60%; height: 3px;
-      background: var(--red);
+      display: none;
     }
     .hero-title .accent { color: var(--red); }
     .hero-desc {
@@ -857,6 +847,9 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
+      .ticker-item { font-size: .65rem; padding: 0 1.5rem; letter-spacing: .08em; }
+      .ticker-item::after { margin-left: 1.5rem; }
+      .ticker-wrap { padding: .6rem 0; }
       .nav-links, .nav-phone, .nav-cta { display: none; }
       .burger { display: flex; }
       .container { padding: 0 2.25rem; }
@@ -1429,7 +1422,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* ── NAVBAR SCROLL ── */
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1458,7 +1451,14 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  /* �  /* ── FORM ── */
+  /* ── FORM ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.style.opacity = '.4';
+    e.target.style.pointerEvents = 'none';
+  }
+
   /* ── MENTIONS LÉGALES ── */
   function openLegal() {
     document.getElementById('modal-legal').style.display = 'block';
@@ -1466,3 +1466,9 @@
   }
   function closeLegal() {
     document.getElementById('modal-legal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLegal(); });
+</script>
+</body>
+</html>
