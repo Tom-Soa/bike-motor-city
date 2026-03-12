@@ -276,7 +276,7 @@
       .container { padding: 0 1.5rem; }
       .hero-mobile-title { display: none; }
       .hero-desktop-title { display: block; }
-      .hero-section { min-height: 100svh !important; display: flex; flex-direction: column; }
+      .hero-section { min-height: unset !important; max-height: calc(100dvh - 100px); overflow: hidden; display: flex; flex-direction: column; }
       .hero-inner {
         flex: 1;
         min-height: unset !important;
@@ -287,7 +287,7 @@
       }
       .hero-inner > div { display: flex; flex-direction: column; justify-content: space-between; flex: 1; }
       .hero-content { max-width: 100%; padding: 0; display: flex; flex-direction: column; }
-      .hero-title { font-size: clamp(5rem, 20vw, 7rem) !important; line-height: .86; margin-bottom: .6rem; order: 1; }
+      .hero-title { font-size: clamp(2.85rem, 11vw, 4rem) !important; line-height: .86; margin-bottom: .6rem; order: 1; }
       .hero-eyebrow { font-size: .62rem; letter-spacing: .18em; margin-bottom: 0; margin-top: .5rem; order: 2; }
       .hero-actions { flex-direction: column; align-items: stretch; gap: .5rem; margin-top: 1rem; order: 3; }
       .hero-actions .btn { width: 100%; justify-content: center; padding: .9rem 1rem; font-size: .85rem; }
@@ -320,7 +320,7 @@
     @media (max-width: 480px) {
       .container { padding: 0 1.25rem; }
       .why-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: clamp(4.5rem, 18vw, 6rem) !important; }
+      .hero-title { font-size: clamp(2.55rem, 10vw, 3.75rem) !important; }
       .hero-stat-num { font-size: 1.8rem; }
       .hero-stat-item { padding: .4rem 1rem; }
       .section-title { font-size: clamp(2.2rem, 10vw, 3rem); }
