@@ -274,19 +274,24 @@
       .nav-links, .nav-phone, .nav-cta { display: none; }
       .burger { display: flex; }
       .container { padding: 0 1.5rem; }
-      .hero-mobile-title { display: block; }
-      .hero-desktop-title { display: none; }
-      .hero-section { min-height: unset; }
-      .hero-inner { min-height: unset; padding: 7rem 1.5rem 2rem; display: block; }
+      .hero-mobile-title { display: none; }
+      .hero-desktop-title { display: block; }
+      .hero-section { min-height: unset !important; }
+      .hero-inner {
+        min-height: unset !important;
+        padding: 6rem 1.5rem 2rem !important;
+        display: block !important;
+      }
+      .hero-inner > div { display: block; width: 100%; }
       .hero-content { max-width: 100%; padding: 0; }
-      .hero-title { font-size: clamp(1.75rem, 7vw, 2.5rem); line-height: .93; margin-bottom: .65rem; }
-      .hero-eyebrow { font-size: .55rem; letter-spacing: .16em; margin-bottom: .6rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; gap: .45rem; }
-      .hero-actions .btn { width: 100%; justify-content: center; padding: .75rem 1rem; font-size: .8rem; }
-      .hero-stats { margin-top: 1.25rem; }
-      .hero-stat-item { padding: .4rem 1rem; }
-      .hero-stat-num { font-size: 1.8rem; }
-      .hero-stat-label { font-size: .52rem; }
+      .hero-title { font-size: clamp(2.6rem, 10vw, 3.5rem); line-height: .9; margin-bottom: .8rem; }
+      .hero-eyebrow { font-size: .58rem; letter-spacing: .18em; margin-bottom: .8rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: .5rem; margin-top: .8rem; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: .85rem 1rem; font-size: .85rem; }
+      .hero-stats { margin-top: 1.5rem; }
+      .hero-stat-item { padding: .5rem 1rem; }
+      .hero-stat-num { font-size: 2rem; }
+      .hero-stat-label { font-size: .54rem; }
       .services-section { padding: 3rem 0; }
       .services-header { margin-bottom: 2rem; }
       .why-section { padding: 3rem 0; }
@@ -372,7 +377,7 @@
   <section class="hero-section">
     <div class="hero-bg"></div>
     <div class="hero-inner container">
-      <div style="width:100%;">
+      <div>
         <div class="hero-content">
           <p class="hero-eyebrow">Atelier deux-roues — Villeneuve-le-Roi</p>
           <h1 class="hero-title">
@@ -924,7 +929,10 @@
     if (window.innerWidth <= 768) {
       const navH = navbar.getBoundingClientRect().height;
       const heroInner = document.querySelector('.hero-inner');
-      if (heroInner) heroInner.style.paddingTop = (navH + 20) + 'px';
+      if (heroInner) heroInner.style.paddingTop = (navH + 16) + 'px';
+    } else {
+      const heroInner = document.querySelector('.hero-inner');
+      if (heroInner) heroInner.style.paddingTop = '';
     }
   }
   fixHeroPadding();
