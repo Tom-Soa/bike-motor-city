@@ -84,6 +84,8 @@
     .page-hero-title span { color: var(--red); }
     .page-hero-sub { font-size: .95rem; color: rgba(255,255,255,.5); margin-top: 1.5rem; max-width: 480px; }
 
+    .hero-mobile-title { display: none; }
+    .hero-desktop-title { display: block; }
     /* ── HERO ACCUEIL ── */
     .hero-section { min-height: 100vh; display: flex; align-items: stretch; position: relative; overflow: hidden; background: #111; }
     .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80'); background-size: cover; background-position: center; }
@@ -272,15 +274,17 @@
       .nav-links, .nav-phone, .nav-cta { display: none; }
       .burger { display: flex; }
       .container { padding: 0 1.5rem; }
-      .hero-inner { padding: 5rem 0 1.5rem; min-height: unset; display: flex; flex-direction: column; justify-content: flex-start; }
+      .hero-mobile-title { display: block; }
+      .hero-desktop-title { display: none; }
+      .hero-inner { padding: 5.5rem 0 1.5rem; min-height: unset; display: flex; flex-direction: column; justify-content: flex-start; }
       .hero-inner > div { display: flex; flex-direction: column; gap: 0; width: 100%; }
       .hero-section { min-height: unset; }
       .hero-content { max-width: 100%; padding: 0 1.5rem; flex: unset; }
-      .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); line-height: .92; margin-bottom: .75rem; }
-      .hero-eyebrow { font-size: .6rem; letter-spacing: .2em; margin-bottom: .75rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; gap: .5rem; }
-      .hero-actions .btn { width: 100%; justify-content: center; padding: .8rem 1rem; font-size: .82rem; }
-      .hero-stats { margin-top: 1.5rem; }
+      .hero-title { font-size: clamp(2rem, 7.5vw, 2.8rem); line-height: .94; margin-bottom: .7rem; }
+      .hero-eyebrow { font-size: .58rem; letter-spacing: .18em; margin-bottom: .7rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: .45rem; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: .75rem 1rem; font-size: .8rem; }
+      .hero-stats { margin-top: 1.25rem; }
       .hero-stat-item { padding: .4rem 1rem; }
       .hero-stat-num { font-size: 1.8rem; }
       .hero-stat-label { font-size: .55rem; }
@@ -301,9 +305,9 @@
     @media (max-width: 480px) {
       .container { padding: 0 1.25rem; }
       .why-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
-      .hero-stat-num { font-size: 1.6rem; }
-      .hero-stat-item { padding: .3rem .7rem; }
+      .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .hero-stat-num { font-size: 1.8rem; }
+      .hero-stat-item { padding: .4rem 1rem; }
       .section-title { font-size: clamp(2.2rem, 10vw, 3rem); }
       .reviews-score { flex-direction: column; text-align: center; padding: 1.25rem 1.5rem; }
     }
@@ -361,9 +365,12 @@
   <section class="hero-section">
     <div class="hero-bg"></div>
     <div class="hero-inner container">
-      <div style="width:100%;display:flex;flex-direction:column;flex:1;">
-        <div class="hero-content" style="flex:1;">
-          <h1 class="hero-title">VOTRE<br><span class="accent">MOTO</span><br><span class="outline">MÉRITE</span><br>LE MEILLEUR</h1>
+      <div style="width:100%;">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="hero-mobile-title">VOTRE <span class="accent">MOTO</span><br><span class="outline">MÉRITE</span> LE MEILLEUR</span>
+            <span class="hero-desktop-title">VOTRE<br><span class="accent">MOTO</span><br><span class="outline">MÉRITE</span><br>LE MEILLEUR</span>
+          </h1>
           <p class="hero-eyebrow">Atelier deux-roues — Villeneuve-le-Roi</p>
           <div class="hero-actions">
             <a onclick="navigate('contact')" class="btn btn-primary">Prendre rendez-vous</a>
