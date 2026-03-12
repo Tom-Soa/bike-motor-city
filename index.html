@@ -91,7 +91,7 @@
     .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80'); background-size: cover; background-position: center; }
     .hero-bg::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,.82) 0%, rgba(0,0,0,.5) 60%, rgba(0,0,0,.2) 100%); }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; }
-    .hero-inner { display: flex; align-items: center; justify-content: flex-start; min-height: 100vh; padding: 7rem 0 0; position: relative; z-index: 2; width: 100%; }
+    .hero-inner { display: flex; align-items: center; justify-content: flex-start; min-height: 100vh; padding: 7rem 0 3rem; position: relative; z-index: 2; width: 100%; }
     .hero-content { max-width: 620px; width: 100%; padding: 0 2rem; display: flex; flex-direction: column; align-items: flex-start; }
     .hero-eyebrow { font-size: .7rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .75rem; }
     .hero-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--red); flex-shrink: 0; }
@@ -276,15 +276,22 @@
       .container { padding: 0 1.5rem; }
       .hero-mobile-title { display: block; }
       .hero-desktop-title { display: none; }
-      .hero-inner { padding: 5.5rem 0 1.5rem; min-height: unset; display: flex; flex-direction: column; justify-content: flex-start; }
-      .hero-inner > div { display: flex; flex-direction: column; gap: 0; width: 100%; }
       .hero-section { min-height: unset; }
-      .hero-content { max-width: 100%; padding: 0 1.5rem; flex: unset; }
-      .hero-title { font-size: clamp(2rem, 7.5vw, 2.8rem); line-height: .94; margin-bottom: .7rem; }
-      .hero-eyebrow { font-size: .58rem; letter-spacing: .18em; margin-bottom: .7rem; }
+      .hero-inner { min-height: unset; padding: 7rem 1.5rem 2rem; display: block; }
+      .hero-content { max-width: 100%; padding: 0; }
+      .hero-title { font-size: clamp(1.75rem, 7vw, 2.5rem); line-height: .93; margin-bottom: .65rem; }
+      .hero-eyebrow { font-size: .55rem; letter-spacing: .16em; margin-bottom: .6rem; }
       .hero-actions { flex-direction: column; align-items: stretch; gap: .45rem; }
       .hero-actions .btn { width: 100%; justify-content: center; padding: .75rem 1rem; font-size: .8rem; }
       .hero-stats { margin-top: 1.25rem; }
+      .hero-stat-item { padding: .4rem 1rem; }
+      .hero-stat-num { font-size: 1.8rem; }
+      .hero-stat-label { font-size: .52rem; }
+      .services-section { padding: 3rem 0; }
+      .services-header { margin-bottom: 2rem; }
+      .why-section { padding: 3rem 0; }
+      .reviews-section { padding: 3rem 0; }
+      .reviews-header { margin-bottom: 2rem; }
       .hero-stat-item { padding: .4rem 1rem; }
       .hero-stat-num { font-size: 1.8rem; }
       .hero-stat-label { font-size: .55rem; }
@@ -367,11 +374,11 @@
     <div class="hero-inner container">
       <div style="width:100%;">
         <div class="hero-content">
+          <p class="hero-eyebrow">Atelier deux-roues — Villeneuve-le-Roi</p>
           <h1 class="hero-title">
             <span class="hero-mobile-title">VOTRE <span class="accent">MOTO</span><br><span class="outline">MÉRITE</span> LE MEILLEUR</span>
             <span class="hero-desktop-title">VOTRE<br><span class="accent">MOTO</span><br><span class="outline">MÉRITE</span><br>LE MEILLEUR</span>
           </h1>
-          <p class="hero-eyebrow">Atelier deux-roues — Villeneuve-le-Roi</p>
           <div class="hero-actions">
             <a onclick="navigate('contact')" class="btn btn-primary">Prendre rendez-vous</a>
             <a href="tel:0149612085" class="btn btn-outline-white"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Appeler le garage</a>
@@ -911,6 +918,17 @@
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  /* Padding hero dynamique selon hauteur navbar réelle */
+  function fixHeroPadding() {
+    if (window.innerWidth <= 768) {
+      const navH = navbar.getBoundingClientRect().height;
+      const heroInner = document.querySelector('.hero-inner');
+      if (heroInner) heroInner.style.paddingTop = (navH + 20) + 'px';
+    }
+  }
+  fixHeroPadding();
+  window.addEventListener('resize', fixHeroPadding);
 
   /* Mobile nav */
   function toggleMobile() {
