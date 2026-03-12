@@ -85,7 +85,7 @@
 
     /* ── HERO ACCUEIL ── */
     .hero-section { min-height: 100vh; display: flex; align-items: stretch; position: relative; overflow: hidden; background: #111; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80'); background-size: cover; background-position: center; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://source.unsplash.com/featured/1400x900/?motorcycle,road&sig=1'); background-size: cover; background-position: center; }
     .hero-bg::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,.82) 0%, rgba(0,0,0,.5) 60%, rgba(0,0,0,.2) 100%); }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; }
     .hero-inner { display: flex; align-items: center; justify-content: flex-start; min-height: 100vh; padding: 7rem 0 0; position: relative; z-index: 2; width: 100%; }
@@ -228,6 +228,34 @@
     .modal-box h2 { font-family: var(--ff-head); font-size: 2rem; letter-spacing: .05em; margin-bottom: 1.5rem; border-bottom: 3px solid var(--red); padding-bottom: .5rem; }
     .modal-box h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 .4rem; }
 
+    /* ── CTA FLOTTANT MOBILE ── */
+    .cta-float {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 98;
+      padding: .85rem 1.25rem;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+    }
+    .cta-float a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--ff-head);
+      font-size: 1.35rem;
+      letter-spacing: .08em;
+      padding: .9rem 1rem;
+      border-radius: 3px;
+      width: 100%;
+      transition: background .2s;
+    }
+    .cta-float a:active { background: #c02020; transform: scale(.98); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -237,6 +265,8 @@
       .page-content-grid { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 768px) {
+      .cta-float { display: block; }
+      body { padding-bottom: 78px; }
       .nav-links, .nav-phone, .nav-cta { display: none; }
       .burger { display: flex; }
       .container { padding: 0 1.5rem; }
@@ -408,22 +438,22 @@
       <!-- Grille masonry -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:.75rem;" class="fade-up gallery-grid">
         <div style="grid-column:span 2;grid-row:span 2;overflow:hidden;border-radius:2px;position:relative;">
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&auto=format&fit=crop&q=80" alt="Mécanicien atelier moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
+          <img src="https://source.unsplash.com/featured/900x600/?motorcycle,workshop&sig=3" alt="Mécanicien atelier moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
           <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;opacity:0;transition:opacity .3s;" class="gallery-caption">
             <p style="font-family:var(--ff-head);font-size:1.1rem;letter-spacing:.06em;">EXPERTISE MÉCANIQUE</p>
           </div>
         </div>
         <div style="overflow:hidden;border-radius:2px;position:relative;">
-          <img src="https://images.unsplash.com/photo-1504222490345-c075b7ded8ff?w=600&auto=format&fit=crop&q=80" alt="Outils atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
+          <img src="https://source.unsplash.com/featured/600x400/?tools,mechanic&sig=4" alt="Outils atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
         </div>
         <div style="overflow:hidden;border-radius:2px;position:relative;">
-          <img src="https://images.unsplash.com/photo-1590756254933-2873d72a83b6?w=600&auto=format&fit=crop&q=80" alt="Pièces moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
+          <img src="https://source.unsplash.com/featured/600x400/?motorcycle,parts&sig=5" alt="Pièces moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
         </div>
         <div style="overflow:hidden;border-radius:2px;position:relative;">
-          <img src="https://images.unsplash.com/photo-1558981396-2a8eb5f08636?w=600&auto=format&fit=crop&q=80" alt="Réparation moto atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
+          <img src="https://source.unsplash.com/featured/600x400/?motorcycle,repair&sig=6" alt="Réparation moto atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
         </div>
         <div style="overflow:hidden;border-radius:2px;position:relative;">
-          <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&auto=format&fit=crop&q=80" alt="Garage moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
+          <img src="https://source.unsplash.com/featured/600x400/?motorcycle,garage&sig=7" alt="Garage moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" class="gallery-img"/>
         </div>
       </div>
       <style>
@@ -465,7 +495,7 @@
 
 <!-- ════════ PAGE À PROPOS ════════ -->
 <div id="page-a-propos" class="page" style="display:none;">
-  <div class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?w=1400&auto=format&fit=crop&q=80');background-size:cover;background-position:center;">
+  <div class="page-hero" style="background-image:url('https://source.unsplash.com/featured/1400x900/?mechanic,workshop&sig=2');background-size:cover;background-position:center;">
     <div style="position:absolute;inset:0;background:rgba(0,0,0,.72);"></div>
     <div class="container page-hero-inner">
       <div class="page-hero-eyebrow">Notre histoire</div>
@@ -477,7 +507,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-img-wrap fade-up">
-          <img class="about-img-main" src="https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?w=900&auto=format&fit=crop&q=80" alt="Mécanicien Bike Motor City"/>
+          <img class="about-img-main" src="https://source.unsplash.com/featured/900x600/?mechanic,motorcycle&sig=2" alt="Mécanicien Bike Motor City"/>
           <div class="about-img-accent"></div>
           <div class="about-img-badge"><strong>1998</strong><small>Fondé en</small></div>
         </div>
@@ -507,23 +537,23 @@
       <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:260px 260px;gap:1rem;" class="fade-up">
         <!-- Grande image gauche -->
         <div style="grid-row:span 2;border-radius:2px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop&q=80" alt="Atelier moto" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
+          <img src="https://source.unsplash.com/featured/800x600/?workshop,atelier&sig=12" alt="Atelier moto" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
         </div>
         <!-- Top droite -->
         <div style="border-radius:2px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&auto=format&fit=crop&q=80" alt="Mécanicien au travail" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
+          <img src="https://source.unsplash.com/featured/700x500/?motorcycle,repair&sig=3" alt="Mécanicien au travail" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
         </div>
         <!-- Top milieu -->
         <div style="border-radius:2px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1504222490345-c075b7ded8ff?w=700&auto=format&fit=crop&q=80" alt="Outils atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
+          <img src="https://source.unsplash.com/featured/700x500/?tools,workshop&sig=4" alt="Outils atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
         </div>
         <!-- Bottom milieu -->
         <div style="border-radius:2px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&auto=format&fit=crop&q=80" alt="Mécanique moto" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
+          <img src="https://source.unsplash.com/featured/700x500/?motorcycle,road&sig=1b" alt="Mécanique moto" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
         </div>
         <!-- Bottom droite -->
         <div style="border-radius:2px;overflow:hidden;position:relative;">
-          <img src="https://images.unsplash.com/photo-1590756254933-2873d72a83b6?w=700&auto=format&fit=crop&q=80" alt="Pièces moto" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
+          <img src="https://source.unsplash.com/featured/700x500/?engine,parts&sig=5" alt="Pièces moto" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"/>
         </div>
       </div>
     </div>
@@ -544,7 +574,7 @@
 
 <!-- ════════ PAGE ENTRETIEN ════════ -->
 <div id="page-entretien" class="page" style="display:none;">
-  <div class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1400&auto=format&fit=crop&q=80');background-size:cover;background-position:center;">
+  <div class="page-hero" style="background-image:url('https://source.unsplash.com/featured/1400x900/?motorcycle,maintenance&sig=8');background-size:cover;background-position:center;">
     <div style="position:absolute;inset:0;background:rgba(0,0,0,.72);"></div>
     <div class="container page-hero-inner">
       <div class="page-hero-eyebrow">Nos services</div>
@@ -574,8 +604,8 @@
           </ul>
         </div>
         <div class="fade-up">
-          <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=800&auto=format&fit=crop&q=80" alt="Entretien moto freins" style="width:100%;height:320px;object-fit:cover;border-radius:2px;margin-bottom:.75rem;"/>
-          <img src="https://images.unsplash.com/photo-1558981396-2a8eb5f08636?w=800&auto=format&fit=crop&q=80" alt="Révision moto atelier" style="width:100%;height:220px;object-fit:cover;border-radius:2px;margin-bottom:1rem;"/>
+          <img src="https://source.unsplash.com/featured/800x600/?brake,motorcycle&sig=9" alt="Entretien moto freins" style="width:100%;height:320px;object-fit:cover;border-radius:2px;margin-bottom:.75rem;"/>
+          <img src="https://source.unsplash.com/featured/800x600/?motorcycle,service&sig=6" alt="Révision moto atelier" style="width:100%;height:220px;object-fit:cover;border-radius:2px;margin-bottom:1rem;"/>
           <div class="info-box">
             <h3>Révision avant contrôle technique</h3>
             <p style="font-size:.9rem;color:var(--text-light);">Nous intervenons pour garantir la conformité de tous les éléments : moteur, embrayage, freins et fluides. Prenez rendez-vous avant votre passage au CT.</p>
@@ -589,7 +619,7 @@
 
 <!-- ════════ PAGE RÉPARATION ════════ -->
 <div id="page-reparation" class="page" style="display:none;">
-  <div class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=1400&auto=format&fit=crop&q=80');background-size:cover;background-position:center;">
+  <div class="page-hero" style="background-image:url('https://source.unsplash.com/featured/1400x900/?mechanic,repair&sig=10');background-size:cover;background-position:center;">
     <div style="position:absolute;inset:0;background:rgba(0,0,0,.75);"></div>
     <div class="container page-hero-inner">
       <div class="page-hero-eyebrow">Nos services</div>
@@ -619,8 +649,8 @@
           </ul>
         </div>
         <div class="fade-up">
-          <img src="https://images.unsplash.com/photo-1504222490345-c075b7ded8ff?w=800&auto=format&fit=crop&q=80" alt="Diagnostic électronique moto" style="width:100%;height:320px;object-fit:cover;border-radius:2px;margin-bottom:.75rem;"/>
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop&q=80" alt="Mécanicien réparation moto" style="width:100%;height:220px;object-fit:cover;border-radius:2px;margin-bottom:1rem;"/>
+          <img src="https://source.unsplash.com/featured/800x600/?tools,repair&sig=4" alt="Diagnostic électronique moto" style="width:100%;height:320px;object-fit:cover;border-radius:2px;margin-bottom:.75rem;"/>
+          <img src="https://source.unsplash.com/featured/800x600/?mechanic,garage&sig=3" alt="Mécanicien réparation moto" style="width:100%;height:220px;object-fit:cover;border-radius:2px;margin-bottom:1rem;"/>
           <div class="info-box">
             <h3>Diagnostic électronique</h3>
             <p style="font-size:.9rem;color:var(--text-light);">Pour les pannes complexes, nous réalisons des diagnostics électroniques pour localiser rapidement les problèmes. Valise de diagnostic compatible toutes marques.</p>
@@ -632,15 +662,16 @@
   </section>
   <!-- Bandeau photos pleine largeur -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);height:280px;margin-top:0;" class="fade-up">
-    <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1558981396-2a8eb5f08636?w=700&auto=format&fit=crop&q=80" alt="Atelier réparation" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/></div>
-    <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1590756254933-2873d72a83b6?w=700&auto=format&fit=crop&q=80" alt="Pièces moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/></div>
-    <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=700&auto=format&fit=crop&q=80" alt="Garage moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/></div>
+    <div style="overflow:hidden;"><img src="https://source.unsplash.com/featured/700x500/?garage,repair&sig=6" alt="Atelier réparation" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/></div>
+    <div style="overflow:hidden;"><img src="https://source.unsplash.com/featured/700x500/?engine,parts&sig=5" alt="Pièces moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/></div>
+    <div style="overflow:hidden;"><img src="https://source.unsplash.com/featured/700x500/?bike,workshop&sig=7" alt="Garage moto" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/></div>
   </div>
 </div>
 
 <!-- ════════ PAGE VENTE ════════ -->
 <div id="page-vente" class="page" style="display:none;">
-  <div class="page-hero">
+  <div class="page-hero" style="background-image:url('https://source.unsplash.com/featured/1400x900/?motorcycle,showroom&sig=11');background-size:cover;background-position:center;">
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,.72);"></div>
     <div class="container page-hero-inner">
       <div class="page-hero-eyebrow">Boutique</div>
       <h1 class="page-hero-title"><span>VENTE</span></h1>
@@ -668,7 +699,8 @@
           </ul>
         </div>
         <div class="fade-up">
-          <img src="https://images.unsplash.com/photo-1558618047-3c7c5ee5d6f0?w=800&auto=format&fit=crop&q=80" alt="Vente moto" style="width:100%;height:380px;object-fit:cover;border-radius:2px;margin-bottom:1.5rem;"/>
+          <img src="https://source.unsplash.com/featured/800x600/?motorcycle,showroom&sig=7" alt="Moto à vendre garage" style="width:100%;height:320px;object-fit:cover;border-radius:2px;margin-bottom:.75rem;"/>
+          <img src="https://source.unsplash.com/featured/800x600/?motorcycle,vintage&sig=1c" alt="Motos occasion" style="width:100%;height:200px;object-fit:cover;border-radius:2px;margin-bottom:1rem;"/>
           <div class="info-box">
             <h3>Remorquage, hivernage & dépôt-vente</h3>
             <p style="font-size:.9rem;color:var(--text-light);">Panne en route ? Remorquage sur rendez-vous. Stockage sécurisé de votre moto pendant l'hiver avec remise en route au printemps. Dépôt-vente disponible.</p>
@@ -682,7 +714,8 @@
 
 <!-- ════════ PAGE CONTACT ════════ -->
 <div id="page-contact" class="page" style="display:none;">
-  <div class="page-hero">
+  <div class="page-hero" style="background-image:url('https://source.unsplash.com/featured/1400x900/?mechanic,workshop&sig=2');background-size:cover;background-position:center top;">
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,.76);"></div>
     <div class="container page-hero-inner">
       <div class="page-hero-eyebrow">Nous joindre</div>
       <h1 class="page-hero-title">CON<span>TACT</span></h1>
@@ -706,7 +739,7 @@
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="contact-detail-label">E-mail</div><div class="contact-detail-value"><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></div></div>
+            <div><div class="contact-detail-label">E-mail</div><div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#2143484a444c4e554e53424855581815614d4857440f4753"><span class="__cf_email__" data-cfemail="e3818a88868e8c978c91808a979adad7a38f8a9586cd8591">[email&#160;protected]</span></a></div></div>
           </div>
           <div class="horaires">
             <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Horaires</h4>
@@ -739,6 +772,35 @@
       </div>
     </div>
   </section>
+</div>
+
+<!-- ── CTA FLOTTANT MOBILE ── -->
+<div class="cta-float">
+  <a href="tel:0149612085">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    APPELER — 01 49 61 20 85
+  </a>
+</div>
+
+<!-- ── BANDEAU PHOTOS PLEIN-LARGEUR ── -->
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;height:320px;overflow:hidden;" class="photos-band">
+  <div style="overflow:hidden;position:relative;">
+    <img src="https://source.unsplash.com/featured/900x600/?motorcycle,workshop&sig=3" alt="Mécanicien atelier" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
+    <div style="position:absolute;bottom:1.5rem;left:1.5rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:.08em;text-shadow:0 2px 8px rgba(0,0,0,.5);">EXPERTS DEUX-ROUES</div>
+  </div>
+  <div style="overflow:hidden;">
+    <img src="https://source.unsplash.com/featured/600x400/?tools,mechanic&sig=4" alt="Outils mécanicien" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
+  </div>
+  <div style="overflow:hidden;">
+    <img src="https://source.unsplash.com/featured/600x400/?brake,motorcycle&sig=9b" alt="Freins moto" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
+  </div>
+  <div style="overflow:hidden;">
+    <img src="https://source.unsplash.com/featured/600x400/?motorcycle,parts&sig=5" alt="Pièces détachées" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
+  </div>
+  <style>
+    @media(max-width:768px) { .photos-band { grid-template-columns:1fr 1fr !important; height:360px; } .photos-band > div:nth-child(n+3) { display:none; } }
+    @media(max-width:480px) { .photos-band { grid-template-columns:1fr !important; height:200px; } .photos-band > div:nth-child(n+2) { display:none; } }
+  </style>
 </div>
 
 <!-- ── FOOTER ── -->
@@ -775,7 +837,7 @@
         <ul class="footer-links">
           <li><a href="tel:0149612085">01 49 61 20 85</a></li>
           <li><a href="tel:0664949056">06 64 94 90 56</a></li>
-          <li><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#5133383a343c3e253e23323825286865113d3827347f3723"><span class="__cf_email__" data-cfemail="c7a5aeaca2aaa8b3a8b5a4aeb3befef387abaeb1a2e9a1b5">[email&#160;protected]</span></a></li>
           <li><a onclick="navigate('contact')">119 Av. Le Foll, 94290</a></li>
         </ul>
       </div>
@@ -797,20 +859,20 @@
     <button class="modal-close" onclick="closeLegal()">✕</button>
     <h2>Mentions Légales</h2>
     <h3>1. Éditeur du site</h3>
-    <p><strong>Bike Motor City</strong> — SARL au capital de 10 000 €<br>Siège social : 119 Avenue Le Foll, 94290 Villeneuve-le-Roi<br>SIRET : 123 456 789 00012<br>Responsable de publication : Patrick / Benjamin<br>Tél : 01 49 61 20 85 — Email : <a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></p>
+    <p><strong>Bike Motor City</strong> — SARL au capital de 10 000 €<br>Siège social : 119 Avenue Le Foll, 94290 Villeneuve-le-Roi<br>SIRET : 123 456 789 00012<br>Responsable de publication : Patrick / Benjamin<br>Tél : 01 49 61 20 85 — Email : <a href="/cdn-cgi/l/email-protection#a1c3c8cac4ccced5ced3c2c8d5d89895e1cdc8d7c48fc7d3"><span class="__cf_email__" data-cfemail="96f4fffdf3fbf9e2f9e4f5ffe2efafa2d6faffe0f3b8f0e4">[email&#160;protected]</span></a></p>
     <h3>2. Hébergement</h3>
     <p><strong>OVH SAS</strong> — 2 rue Kellermann, 59100 Roubaix — Tél : 1007</p>
     <h3>3. Propriété intellectuelle</h3>
     <p>L'ensemble des contenus est la propriété exclusive de Bike Motor City. Toute reproduction sans autorisation est interdite.</p>
     <h3>4. Données personnelles</h3>
-    <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Contact : <a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></p>
+    <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Contact : <a href="/cdn-cgi/l/email-protection#62000b09070f0d160d10010b161b5b56220e0b14074c0410"><span class="__cf_email__" data-cfemail="f3919a98969e9c879c81909a878acac7b39f9a8596dd9581">[email&#160;protected]</span></a></p>
     <h3>5. Cookies</h3>
     <p>Ce site n'utilise pas de cookies à des fins publicitaires ou de traçage.</p>
     <p style="margin-top:2rem;font-size:.8rem;color:#888;"><em>Informations à vérifier avant mise en production.</em></p>
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const PAGES = ['accueil','a-propos','entretien','reparation','vente','contact'];
 
   function navigate(page) {
