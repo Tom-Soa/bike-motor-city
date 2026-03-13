@@ -118,7 +118,7 @@
     .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
     .services-visual { width: 100%; height: 200px; border-radius: 4px; overflow: hidden; margin-bottom: 1.75rem; position: relative; }
     .services-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; filter: brightness(.85); }
-    .services-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 50%, transparent 100%); }
+    .services-visual::after { content: ""; position: absolute; inset: 0; background: none; }
     .services-visual-text { position: absolute; bottom: 1.25rem; left: 2rem; z-index: 2; color: #fff; }
     .services-visual-text strong { font-family: var(--ff-head); font-size: 1.7rem; letter-spacing: .06em; display: block; line-height: 1; }
     .services-visual-text span { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; opacity: .78; }
@@ -397,16 +397,14 @@
 
   <section class="services-section">
     <div class="container">
-      <div class=\"services-visual fade-up\" referrerpolicy=\"no-referrer\">
-        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=1200&auto=format&fit=crop&q=80" alt="Atelier moto" referrerpolicy="no-referrer" crossorigin="anonymous"/>
-        <div class="services-visual-text">
-          <strong>ENTRETIEN — RÉPARATION — VENTE</strong>
-          <span>Toutes marques · Villeneuve-le-Roi</span>
-        </div>
-      </div>
-      <div class="services-header fade-up">
+      <div class="services-header fade-up" style="display:block;">
         <div><span class="tag">Nos prestations</span><h2 class="section-title">TOUT CE DONT<br>VOTRE <span>MOTO</span> A BESOIN</h2></div>
-        <a onclick="navigate('contact')" class="btn btn-outline">Demander un devis →</a>
+      </div>
+      <div class="services-visual fade-up" referrerpolicy="no-referrer">
+        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=1200&auto=format&fit=crop&q=80" alt="Atelier moto" referrerpolicy="no-referrer" crossorigin="anonymous"/>
+      </div>
+      <div class="fade-up" style="margin-top:1.5rem;margin-bottom:2.5rem;">
+        <a onclick="navigate('contact')" class="btn btn-outline" style="width:100%;text-align:center;">Demander un devis →</a>
       </div>
       <div class="services-grid fade-up">
         <div class="service-card" onclick="navigate('entretien')">
@@ -497,7 +495,7 @@
     <div class="container">
       <div class="reviews-header fade-up" style="display:block;text-align:center;">
         <div><span class="tag">Témoignages</span><h2 class="section-title">ILS NOUS <span>FONT CONFIANCE</span></h2></div>
-        <p style="color:var(--muted);font-size:.9rem;margin-top:.75rem;"><span style="color:#f5a623;">★★★★★</span> <strong style="color:var(--text);">4.8/5</strong> — Note moyenne sur +100 avis Allo Pneus</p>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:.75rem;"><span style="color:#f5a623;">★★★★★</span> <strong style="color:var(--text);">4.8/5</strong><br>Note moyenne sur +100 avis Allo Pneus</p>
       </div>
       <div class="reviews-grid">
         <div class="review-card fade-up"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text">Excellent accueil, diagnostic rapide et réparation faite dans les délais annoncés. Le rapport photo à la fin est vraiment un plus. Je recommande vivement.</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Marc T.</div><div class="review-date">Novembre 2024 · Allo Pneus</div></div></div></div>
@@ -758,7 +756,7 @@
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="contact-detail-label">E-mail</div><div class="contact-detail-value"><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></div></div>
+            <div><div class="contact-detail-label">E-mail</div><div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection#88eae1e3ede5e7fce7faebe1fcf1b1bcc8e4e1feeda6eefa"><span class="__cf_email__" data-cfemail="a4c6cdcfc1c9cbd0cbd6c7cdd0dd9d90e4c8cdd2c18ac2d6">[email&#160;protected]</span></a></div></div>
           </div>
           <div class="horaires">
             <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Horaires</h4>
@@ -856,7 +854,7 @@
         <ul class="footer-links">
           <li><a href="tel:0149612085">01 49 61 20 85</a></li>
           <li><a href="tel:0664949056">06 64 94 90 56</a></li>
-          <li><a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#dcbeb5b7b9b1b3a8b3aebfb5a8a5e5e89cb0b5aab9f2baae"><span class="__cf_email__" data-cfemail="94f6fdfff1f9fbe0fbe6f7fde0edada0d4f8fde2f1baf2e6">[email&#160;protected]</span></a></li>
           <li><a onclick="navigate('contact')">119 Av. Le Foll, 94290</a></li>
         </ul>
       </div>
@@ -878,20 +876,20 @@
     <button class="modal-close" onclick="closeLegal()">✕</button>
     <h2>Mentions Légales</h2>
     <h3>1. Éditeur du site</h3>
-    <p><strong>Bike Motor City</strong> — SARL au capital de 10 000 €<br>Siège social : 119 Avenue Le Foll, 94290 Villeneuve-le-Roi<br>SIRET : 123 456 789 00012<br>Responsable de publication : Patrick / Benjamin<br>Tél : 01 49 61 20 85 — Email : <a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></p>
+    <p><strong>Bike Motor City</strong> — SARL au capital de 10 000 €<br>Siège social : 119 Avenue Le Foll, 94290 Villeneuve-le-Roi<br>SIRET : 123 456 789 00012<br>Responsable de publication : Patrick / Benjamin<br>Tél : 01 49 61 20 85 — Email : <a href="/cdn-cgi/l/email-protection#086a61636d65677c677a6b617c71313c4864617e6d266e7a"><span class="__cf_email__" data-cfemail="76141f1d131b19021904151f020f4f42361a1f0013581004">[email&#160;protected]</span></a></p>
     <h3>2. Hébergement</h3>
     <p><strong>OVH SAS</strong> — 2 rue Kellermann, 59100 Roubaix — Tél : 1007</p>
     <h3>3. Propriété intellectuelle</h3>
     <p>L'ensemble des contenus est la propriété exclusive de Bike Motor City. Toute reproduction sans autorisation est interdite.</p>
     <h3>4. Données personnelles</h3>
-    <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Contact : <a href="mailto:bikemotorcity94@live.fr">bikemotorcity94@live.fr</a></p>
+    <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Contact : <a href="/cdn-cgi/l/email-protection#0163686a646c6e756e73626875783835416d6877642f6773"><span class="__cf_email__" data-cfemail="a8cac1c3cdc5c7dcc7dacbc1dcd1919ce8c4c1decd86ceda">[email&#160;protected]</span></a></p>
     <h3>5. Cookies</h3>
     <p>Ce site n'utilise pas de cookies à des fins publicitaires ou de traçage.</p>
     <p style="margin-top:2rem;font-size:.8rem;color:#888;"><em>Informations à vérifier avant mise en production.</em></p>
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const PAGES = ['accueil','a-propos','entretien','reparation','vente','contact'];
 
   function navigate(page) {
@@ -954,7 +952,7 @@
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => entry.target.classList.add('visible'), 80 * i);
-          obs.unobserve(entry.target);
+                    obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -966,7 +964,7 @@
   function handleSubmit(e) {
     e.preventDefault();
     const success = document.getElementById('form-success');
-        if (success) {
+    if (success) {
       success.style.display = 'block';
       e.target.style.display = 'none';
       setTimeout(() => {
